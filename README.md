@@ -26,7 +26,7 @@ Thinkphp访问规则是``模块/控制器/方法``，通常模块中控制器对
 
 
 
-![]()http://sunkey.me/content/images/2016/04/QQ20160408-0-01.png)
+![thinkphp-Backer截图](http://sunkey.me/content/images/2016/04/QQ20160408-0-01.png)
 
 
 

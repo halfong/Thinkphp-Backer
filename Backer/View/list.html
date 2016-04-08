@@ -1,0 +1,72 @@
+<extend name="./base" />
+
+<block name="main">
+<div id="list" class="main">
+
+	<h2>{:magic_title()}</h2>
+
+	<present name="C.model.list.filter">
+	<form id="filter" method="get" action="__ACTION__">
+		<foreach name="C.model.list.filter" item="filt" key="filt_key">
+		<div class="{$filt.type}">
+			<switch name="filt.type">
+				<case value="hidden">
+					<input class="input" type="hidden" name="{$filt_key}" value="{$_GET[$filt_key]}" />
+				</case>
+				<case value="input">
+					<input class="input" type="text" name="{$filt_key}" placeholder="{$filt_key|dict}" value="{$_GET[$filt_key]}" />
+					<if condition="isset($_GET[$filt_key])">
+						<span class="clear">X</span>
+					</if>
+				</case>
+				<case value="tab">
+					<input type="hidden" name="{$filt_key}" value="{$_GET[$filt_key]}"/>
+					<notpresent name="filt.hidden">
+					<foreach name="filt.case" item='val'>
+						<a class="tab" name="{$filt_key}" value="{$val}">{$val | dict=###,$filt_key}</a>
+					</foreach>
+					</notpresent>
+				</case>
+			</switch>
+		</div>
+		</foreach>
+		<button>搜索</button>
+	</form>
+	</present>
+
+
+
+
+	<present name="C.model.list.table">
+	<table id='table'>
+		<tr>
+			<foreach name="C.model.list.table" item="fn">
+			<th>{$key|dict}</th>
+			</foreach>
+			<present name="C.model.list.acts">
+			<th>操作</th>
+			</present>
+		</tr>
+		<foreach name="Records" item="record" >
+		<tr>
+			<foreach name="C.model.list.table" item="fn" key="cname">
+				<td>{$record[$cname] | filter=$fn,###}</td>
+			</foreach>
+			<present name="C.model.list.acts">
+				<td>
+				<foreach name="C.model.list.acts" item="fn" key="str">
+				<a href="{$record | filter=$fn,###}">{$str}</a>
+				</foreach>
+				</td>
+			</present>
+	    </tr>
+		</foreach>
+	</table>
+	<div id="pageindex">{$Pageindex}</div>
+	</present>
+
+
+
+
+</div>
+</block>

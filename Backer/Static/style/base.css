@@ -1,0 +1,284 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-size: lighter;
+  font: inherit;
+  color: inherit;
+  outline: 0;
+}
+body {
+  padding-top: 48px;
+  font-size: 14px;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.btn {
+  display: block;
+  padding: .4em 1em;
+  text-decoration: none;
+}
+block {
+  display: block;
+  zoom: 1;
+}
+form {
+  font-size: 1.1em;
+  line-height: 2.4em;
+}
+form input,
+form textarea {
+  border: none;
+  height: 2.4em;
+  color: #333;
+  padding: 0 .6em;
+  background: #f7f7f7;
+  border: 1px #eee solid;
+}
+form .daterangepicker {
+  display: none;
+}
+form .para {
+  padding: .6em 1em;
+}
+form .para label {
+  display: block;
+  float: left;
+  width: 5em;
+  text-align: left;
+  margin-right: .6em;
+}
+form .para > span {
+  margin: 0 .6em;
+  font-size: .9em;
+  color: #999;
+  font-style: italic;
+}
+form .para > button {
+  border: 0;
+  padding: .2em 1em;
+  margin-right: .6em;
+  background: #fb8904;
+  color: #fff;
+  cursor: pointer;
+}
+form .para > button:first-child {
+  margin-left: 5.6em;
+}
+form .para .cke {
+  margin-left: 5em;
+}
+a.btn[href]:hover {
+  background: #444!important;
+}
+a:active {
+  color: #fb8904 !important;
+}
+header#top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  background: #333;
+  z-index: 100;
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+header#top h1 {
+  padding: 0 1em;
+}
+header#top h1 > img {
+  height: 32px;
+  margin-top: 8px;
+  vertical-align: top;
+  margin-right: .6em;
+}
+header#top h1 > span {
+  line-height: 48px;
+}
+header#top > a.btn {
+  padding: 0 1em;
+  height: 48px;
+  line-height: 48px;
+  cursor: pointer;
+  font-size: .8em;
+}
+nav#left {
+  color: #fff;
+  position: fixed;
+  overflow: scroll;
+  left: 0;
+  top: 0;
+  background: #2a2a2a;
+  height: 100%;
+  width: 200px;
+}
+nav#left > ul {
+  width: 100%;
+  padding-top: 70px;
+}
+nav#left > ul a.curr {
+  border-right: 4px #fb8904 solid;
+  background: #373737;
+}
+nav#left > ul > li {
+  margin-bottom: 1em;
+}
+nav#left > ul > li > a {
+  padding: .6em 1em;
+}
+nav#left > ul > li > ul {
+  text-indent: 1em;
+}
+nav#left > ul > li > ul li a {
+  font-size: .9em;
+  color: #777;
+  padding: .6em 1em;
+}
+.main {
+  padding: 1em 4em 10em 250px;
+}
+.main > h2 {
+  font-size: 2em;
+  color: #555;
+  margin: 1em 0;
+}
+.main > h2 a {
+  font-size: .5em;
+  margin-left: 1em;
+  color: #999;
+}
+#list form#filter {
+  margin-bottom: 1.6em;
+  position: relative;
+  border: 1px #f7f7f7 solid;
+  padding: 1em;
+  font-size: .9em;
+  overflow: auto;
+}
+#list form#filter button {
+  float: right;
+  border: 0;
+  background: #fb8904;
+  color: #fff;
+  padding: 0 1em;
+  font-size: .8em;
+}
+#list form#filter > div {
+  float: left;
+  position: relative;
+  overflow: auto;
+  margin-right: 1em;
+}
+#list form#filter .input input {
+  padding-right: 2em;
+}
+#list form#filter .input span.clear {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  cursor: pointer;
+  padding: 0 .6em;
+  color: #aaa;
+  background: #eee;
+}
+#list form#filter .tab > a {
+  cursor: pointer;
+  padding: 0 .6em;
+  display: block;
+  text-decoration: none;
+  margin: 0;
+  border: 1px #eee solid;
+  float: left;
+}
+#list form#filter .tab > a.curr {
+  background: #f7f7f7;
+}
+#list #table {
+  border-collapse: collapse;
+}
+#list #table td,
+#list #table th {
+  border: 1px #eee solid;
+  padding: 1em 1em;
+}
+#list #table th {
+  background: #f7f7f7;
+}
+#list #table td a {
+  font-size: .8em;
+  color: #555;
+  margin-right: .6em;
+}
+#list #table td img {
+  max-width: 100px;
+  max-height: 100px;
+}
+#list #pageindex {
+  line-height: 4em;
+  margin-top: 1em;
+}
+#list #pageindex a,
+#list #pageindex span {
+  text-decoration: none;
+  padding: .6em;
+  background: #eee;
+  margin-right: .6em;
+}
+#list #pageindex span.current {
+  background: #fb8904;
+  color: #fff;
+}
+#edit form .para textarea.rich {
+  width: 600px;
+  height: 100%;
+}
+footer > a {
+  position: fixed;
+  bottom: .6em;
+  right: 1.2em;
+  z-index: 1000;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: right;
+  margin: .6em;
+  color: #fff;
+  text-shadow: 0 0 4px #ccc;
+}
+footer > a:hover {
+  color: #5090fb;
+}
+#login h1#login-logo {
+  margin-top: 100px;
+  text-align: center;
+}
+#login h1#login-logo img {
+  width: 10em;
+}
+#login > form {
+  width: 340px;
+  margin: 2em auto;
+  color: #777;
+  background: #1f1f1f;
+  padding: 1em.4em;
+}
+#login > form input {
+  color: #999;
+  border: 0;
+  background: #333;
+}
+#login > form button {
+  display: block;
+  margin: 0;
+  background: #1b1b1b;
+  color: #aaa;
+  width: 100%;
+}
+#login > form button:active {
+  background: #fb8904;
+}

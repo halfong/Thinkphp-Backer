@@ -1,0 +1,47 @@
+<extend name="./base" />
+
+<block name="main">
+<div id="edit" class="main">
+	<h2>{:I('get.id') ? '修改':'新建'}{:magic_title()}</h2>
+	<form method="post" enctype="multipart/form-data" action="{:U('/Backer/Edit/'.ACTION_NAME.'?save=1')}">
+		<foreach name="C.model.edit.form" item="para_conf" key="para_key">
+		<div class="para {$para_conf.type}">
+			<switch name="para_conf.type">
+				<case value="hidden">
+					<input name='{$para_key}' type="hidden" value="{$Record[$para_key]}"/>	
+				</case>
+				<case value="input">
+					<label>{$para_key|dict}</label>
+					<input name='{$para_key}' type="text" value="{$Record[$para_key]}"/>	
+				</case>
+				<case value="file">
+					<label>{$para_key|dict}</label>
+					<input name='{$para_key}' type="file" />
+				</case>
+				<case value="richtext">
+					<label>{$para_key|dict}</label>
+					<textarea class="rich" name='{$para_key}'>{$Record[$para_key]}</textarea>
+				</case>
+				<case value="radio">
+					<label>{$para_key|dict}</label>
+					<foreach name="para_conf.case" item="val">
+						<input type="radio" name="{$para_key}" value="{$val}" <?php if($Record[$para_key] == $val) echo 'checked'; ?> />{$para_key | dict=$val,###}	
+					</foreach>
+				</case>
+				<case value="date">
+					<label>{$para_key|dict}</label>
+					<input class="datepicker" name='{$para_key}' type="text" value="{$Record[$para_key]}"/>	
+				</case>
+
+				<default/>
+					<span>暂不支持表单控件类型: {$para_conf.type}</span>
+			</switch>
+		</div>
+		</foreach>
+
+		<div class="para">
+			<button>保存</button>
+		</div>
+	</form>
+</div>
+</block>

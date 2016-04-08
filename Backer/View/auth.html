@@ -1,0 +1,29 @@
+<!--登录Backer-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>登录Backer[{$C.title}]</title>
+<link rel="stylesheet" type="text/css" href="{$C.static_path}style/base.css">
+</head>
+<body id="login" style="background:#1b1b1b;">
+
+<h1 id="login-logo">
+	<if condition="$Think.config.BACKER.logo"><img src="{$C.logo}"/>
+	<else/>{$C.title}</if>
+</h1>
+<form method="post" action="{:U('Backer/Auth/login')}">
+	<div class="para">
+		<label>管理员帐号</label>
+		<input name='name' type="text" />
+	</div>
+	<div class="para">
+		<label>密码</label>
+		<input name='password' type="password" />
+	</div>
+	<div class="para">
+		<button>进入</button>
+	</div>
+</form>
+
+</body>
+</html>

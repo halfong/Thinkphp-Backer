@@ -1,0 +1,316 @@
+@tcolor:rgb(251,137,4);
+
+
+
+//preset
+  *{
+    padding: 0;margin:0;
+    font-size: lighter;
+    font: inherit;
+    color: inherit;
+    outline: 0;
+  }
+  body{ padding-top: 48px; font-size:14px; }
+
+  .left{ float: left; }
+  .right{ float: right; }
+  .btn{
+    display: block;padding: .4em 1em;
+    text-decoration: none;
+  }
+  block{ display: block;zoom:1; }
+  form{
+    font-size:1.1em;
+    line-height:2.4em;
+
+    input,textarea{
+      border: none;
+      border: none;
+      height: 2.4em;
+      color: #333;
+      padding: 0 .6em;
+      background: #f7f7f7;
+      border: 1px #eee solid;
+    }
+
+    .daterangepicker{ display: none; }
+
+    .para{
+      padding: .6em 1em;
+
+      label{
+        display: block;float: left;
+        width:5em; text-align: left;
+        margin-right:.6em;
+      }
+
+      >span{
+        margin: 0 .6em;
+        font-size: .9em;
+        color: #999;
+        font-style: italic;
+      }
+
+      >button{
+        border: 0;
+        padding: .2em 1em;
+        margin-right: .6em;
+        background: rgb(251,137,4);
+        color: #fff;
+        cursor: pointer;
+      }
+      >button:first-child{
+        margin-left: 5.6em;
+      }
+      .cke{
+        margin-left: 5em;
+      }
+
+    }
+  }
+  a{
+    &.btn[href]:hover{ background: #444!important; }
+    &:active{
+      color: @tcolor!important;
+    }
+  }
+
+
+
+//头部
+  header#top{
+    position: fixed;
+    top: 0;left: 0;
+    width:100%;height:48px;background: #333;
+    z-index: 100;
+    color: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,.2);
+
+    h1{
+      padding: 0 1em;
+      >img{
+        height: 32px;
+        margin-top: 8px;
+        vertical-align: top;
+        margin-right: .6em;
+      }
+      >span{
+        line-height: 48px;
+      }
+    }
+    >a.btn{
+      padding: 0 1em;height: 48px;
+      line-height: 48px;cursor: pointer;
+      font-size:.8em;
+    }
+  }
+
+//左侧导航
+  nav#left{
+    color: #fff;
+    position:fixed;overflow: scroll;
+    left: 0;top:0;background: #2a2a2a;
+    height: 100%;width:200px;
+
+    >ul{
+      width: 100%;padding-top:70px;
+      a.curr{
+        border-right: 4px @tcolor solid;
+        background: #373737;
+      }
+
+      >li{
+        margin-bottom: 1em;
+        >a{
+          padding: .6em 1em;
+        }
+        >ul{
+          text-indent: 1em;
+          li{
+            a{
+              font-size: .9em; 
+              color: #777;
+              padding: .6em 1em;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+.main{
+  padding: 1em 4em 10em 250px;
+  >h2{
+    font-size: 2em;
+    color: #555;
+    margin: 1em 0;
+    a{
+      font-size: .5em;
+      margin-left: 1em;
+      color: #999;
+    }
+  }
+}
+
+
+//index视图
+  #index{
+    
+  }
+
+
+//List视图
+  #list{
+
+    form#filter{
+      margin-bottom: 1.6em;
+      position: relative;
+      border: 1px #f7f7f7 solid;
+      padding: 1em;
+      font-size: .9em;
+      overflow: auto;
+
+      button{
+        float: right;
+        border: 0;
+        background: rgb(251,137,4);
+        color: #fff;
+        padding: 0 1em;
+        font-size: .8em;
+      }
+      >div{ float: left;position: relative;overflow: auto;margin-right: 1em; }
+      .input{
+        input{ padding-right: 2em; }
+        span.clear{
+          position: absolute;
+          top: 0;
+          right: 2px;
+          cursor: pointer;
+          padding: 0 .6em;
+          color: #aaa;
+          background: #eee;
+        }
+
+      }
+      .tab{
+        >a{
+          cursor: pointer;
+          padding: 0 .6em;
+          display: block;
+          text-decoration: none;
+          margin: 0;
+          border: 1px #eee solid;
+          float: left;
+          &.curr{
+            background: #f7f7f7;
+          }
+        }
+      }
+
+    }
+
+    #table{
+      border-collapse: collapse;
+      td,th{
+        border: 1px #eee solid;
+        padding: 1em 1em;
+      }
+      th{
+        background: #f7f7f7;
+      }
+      td a{
+        font-size: .8em; color: #555;
+        margin-right: .6em;
+      }
+      td img{
+        max-width: 100px;max-height: 100px;
+      }
+    }
+
+    #pageindex {
+      line-height: 4em;margin-top: 1em;
+
+      a,span{
+        text-decoration: none;
+        padding: .6em;
+        background: #eee;
+        margin-right: .6em;
+      }
+      span.current{
+        background: rgb(251,137,4);
+        color: #fff;
+      }
+    }
+  }
+
+
+//edit 视图
+  #edit{
+    form{
+      .para{
+        textarea.rich{
+          width:600px;height:100%; 
+        }
+      }
+    }
+
+
+  }
+
+
+
+//版权注脚
+  footer{
+    >a{
+      position: fixed;
+      bottom:.6em;right:1.2em;
+      z-index: 1000;
+      display: inline-block;
+      text-decoration: none;
+      cursor: pointer;
+      text-align: right;
+      margin: .6em;
+      color: #fff;
+      text-shadow: 0 0 4px #ccc;
+      &:hover{
+        color: #5090fb;
+      }
+    }
+  }
+
+
+//login
+  #login{
+    h1#login-logo{
+      margin-top: 100px;
+      text-align: center;
+      img{
+        width: 10em;
+      }
+    }
+    >form{
+      width: 340px;
+      margin: 2em auto;
+      color: #777;
+      background: #1f1f1f;
+      padding: 1em.4em;
+
+      label{
+        
+      }
+      input{
+        color: #999;border: 0;
+        background: #333;
+      }
+      button{
+        display: block;
+        margin:0;
+        background: #1b1b1b;
+        color: #aaa;width: 100%;
+      }
+      button:active{
+        background: rgb(251,137,4);
+      }
+    }
+  }

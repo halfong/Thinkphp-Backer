@@ -1,6 +1,6 @@
 ## Thinkphp-Backer
 
-一个轻量级的Thinkphp管理后台模块，拖入+修改配置文件就可以开始运行。支持对应用数据模型进行CRU没有D相关操作，省去大量写Admin后台界面&逻辑的时间。
+一个轻量级的Thinkphp管理后台模块，拖入+修改配置文件就可以开始运行。支持对应用数据模型进行CRU没有D相关操作，省去大量写Admin后台界面&逻辑的时间。思路及想法可以看[我的博客>](http://sunkey.me/backer-qing-liang-ji-thinkphpguan-li-hou-tai-mo-kuai/)
 
 通过让您的访问控制器继承Backer/Core里定义好的类（而不是直接继承Think/Controller），可以直接获得Backer定义好的行为及模板视图。
 
@@ -9,13 +9,10 @@
 
 - 不适合：数据结构、业务操作复杂的项目
 
-  ​
 
 ##### 注意
 
 Thinkphp访问规则是``模块/控制器/方法``，通常模块中控制器对应对象，方法对应行为。而在Backer中恰好相反，控制器对应行为，方法对用对象（通常就是Model）。因此，在Backer中的访问路径是这样的：``/Backer/List/Order`` ``/Backer/List/User`` ``/Backer/Edit/User``。目前Backer已定义了view、edit两种Model行为，和auth及base两种框架行为。
-
-
 
 ##### 功能特性
 
@@ -25,6 +22,12 @@ Thinkphp访问规则是``模块/控制器/方法``，通常模块中控制器对
 - List：可配置的数据展示及查询
 - Edit：可配置的数据创建、创建
 - 可方便拓展、修改（实际上核心逻辑只有**200行**左右，其余只是模板界面实现）
+
+
+
+
+![]()http://sunkey.me/content/images/2016/04/QQ20160408-0-01.png)
+
 
 
 

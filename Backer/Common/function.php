@@ -1,31 +1,32 @@
 <?php
 
-//验证用户
-//是否有当前Contrller/Action的权限
-function auth(){
+/**
+* 验证用户
+* @param (boolean)$auth_act 是否验证当前操作的权限
+* @return (array)backer || false
+**/
+function auth($auth_act=false){
+	//return true;
 	$c= strtolower(CONTROLLER_NAME);
 	$a = strtolower(ACTION_NAME);
+	if( !$backer = session('backer') ){ return false; }
+	if( !$auth_act ){ return $backer;}
 
-	if( stristr(C('BACKER.reveal'),$c.'_*') || stristr(C('BACKER.reveal'),$c.'_'.$a) ){ return true; }
-
-	$backer = session('backer');
-	if( !$backer ){ return fasle; }
-	$p = strtolower(C('BACKER_ACCOUNTS')[$backer['name']]['permissions']);
-
-	return stristr($p,$c.'_*') || stristr($p,$c.'_'.$a);
+	return !isset($backer['permissions'][$a]) ? false : 
+		!preg_match($backer['permissions'][$a],$c) ? false :
+		$backer;
 }
 
-//字段名翻译
+/**
+* @return defined dict([controller]_[prefix]_[k] || [prefix]_[k])  || prefix_k
+**/
 function dict($k,$prefix=null){
-	$a = strtolower(ACTION_NAME);
+	$c = strtolower(CONTROLLER_NAME);
 	$k = strtolower($k);
 	if( $prefix ) $k = strtolower($prefix).'_'.$k;
 
-	$text1 = C('BACKER_DICT')[$a.'_'.$k];
-	$text2 = C('BACKER_DICT')[$k];
-	$text3 = $k;
-	
-	return $text1 ? $text1 : ($text2 ? $text2 : $text3);
+	return isset(C('BACKER.dict')[$c.'_'.$k]) ? C('BACKER.dict')[$c.'_'.$k] :
+		( isset(C('BACKER.dict')[$k]) ? C('BACKER.dict')[$k] : $k );
 }
 
 
@@ -54,7 +55,7 @@ function magic_string($string){
 
 //根据URL和DICT自动生成标题
 function magic_title(){
-	$title = '<span>'.dict(ACTION_NAME).'</span>';
+	$title = dict(CONTROLLER_NAME);
 	if( !empty(I('get.')) ){
 		foreach (I('get.') as $prefix => $k) {
 			$p = dict($k,$prefix);
@@ -64,18 +65,14 @@ function magic_title(){
 	return $title;
 }
 
-//
-function transform_params_url($raw,$rule,$url){
-	$params = array();
-	//如果带有proxy，将按其它k/v填充并销毁proxy
-	$pairs= explode('&', $rule);
-	foreach ($pairs as $ok_nk) {
-		$ok_nk = explode('>', $ok_nk);
-		foreach ($raw as $k => $v) {
-			if($ok_nk[0]==$k){ $params[$ok_nk[1]] = $v; }
-		}
-	}
-	return U($url,$params);
+/**
+* 为Index每个Record的操作url追加参数
+**/
+function magic_url($url,$record){
+	return U($url,array_merge(array(
+		'm'=>CONTROLLER_NAME,
+		'id'=>$record['id'],
+	),I('get.')));
 }
 
 

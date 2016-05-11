@@ -3,8 +3,8 @@
 <block name="main">
 <div id="edit" class="main">
 	<h2>{:I('get.id') ? '修改':'新建'}{:magic_title()}</h2>
-	<form method="post" enctype="multipart/form-data" action="{:U('/Backer/Edit/'.ACTION_NAME.'?save=1')}">
-		<foreach name="C.model.edit.form" item="para_conf" key="para_key">
+	<form method="post" enctype="multipart/form-data" action="{:U('',array('save'=>true))}">
+		<foreach name="Edit.form" item="para_conf" key="para_key">
 		<div class="para {$para_conf.type}">
 			<switch name="para_conf.type">
 				<case value="hidden">

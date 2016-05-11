@@ -18,7 +18,7 @@
     CKEDITOR.replace(this,{
       width:600,
       height:300,
-      filebrowserImageUploadUrl: '/index.php?s=/Backer/Edit/upload',
+      filebrowserImageUploadUrl: '/index.php?s=/Backer/Model/upload',
     });
   });
 
@@ -39,6 +39,7 @@
     min: undefined,
     max: undefined,
     selectMonths: true,
+    //hiddenSuffix: '_submit',
     min: new Date(),
     format:'yyyy/mm/dd',
     formatSubmit:'yyyy/mm/dd',
@@ -50,6 +51,7 @@
       }
     },
   });
+
 })();
 
 

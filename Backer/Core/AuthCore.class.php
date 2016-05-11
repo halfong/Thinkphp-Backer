@@ -1,11 +1,25 @@
 <?php
 namespace Backer\Core;
 
-class auth extends base {
+class AuthCore extends BaseCore {
+
+	protected $_assigns = array(
+		'Backer'=>null,
+		'Config'=>null,
+	);
+
+
+	/**
+	模板视图
+	**/
 
 	public function index(){
 		$this->play('./auth');
 	}
+
+	/**
+	执行方法
+	**/
 
 	public function login(){
 		$name=I('post.name');
@@ -13,10 +27,10 @@ class auth extends base {
 
 		if( !$name || !$password ){ $this->error('请Post输入用户名及密码！');return false; }
 
-		foreach ( C('BACKER_ACCOUNTS') as $backer) {
+		foreach ( C('BACKER.accounts') as $backer) {
 			if( $name==$backer['name'] && $password==$backer['password'] ){
 				session('backer',$backer);
-				$this->success('登录成功',U('/Backer/Index'));
+				redirect(U('/Backer/Index'));
 				return true;
 			}
 		}
@@ -26,7 +40,7 @@ class auth extends base {
 
 	public function logout(){
 		session('backer',null);
-		$this->success('已登出',U('/Backer/Auth'));
+		redirect(U('/Backer/Auth'));
 	}
 
 }

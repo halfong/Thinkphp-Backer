@@ -1,17 +1,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>{$C.title}{$title}</title>
-<link rel="stylesheet" type="text/css" href="{$C.static_path}vendor/pickadate/lib/compressed/themes/classic.css">
-<link rel="stylesheet" type="text/css" href="{$C.static_path}vendor/pickadate/lib/compressed/themes/classic.date.css">
-<link rel="stylesheet" type="text/css" href="{$C.static_path}style/base.css">
+<title>{$Config.title}::{:magic_title()}</title>
+<link rel="stylesheet" type="text/css" href="{$Config.static_path}vendor/pickadate/lib/compressed/themes/classic.css">
+<link rel="stylesheet" type="text/css" href="{$Config.static_path}vendor/pickadate/lib/compressed/themes/classic.date.css">
+<link rel="stylesheet" type="text/css" href="{$Config.static_path}style/base.css">
 </head>
 <body>
 
 <header id="top">
 	<h1 class="left">
-		<present name="C.logo"><img src="{$C.logo}"/></present>
-		<span>{$C.title}</span>
+		<present name="Config.logo"><img src="{$Config.logo}"/></present>
+		<span>{$Config.title}</span>
 	</h1>
 	<a class="btn right" href="{:U('Backer/Auth/logout')}">退出 {$Backer.name}</a>
 </header>
@@ -19,7 +19,7 @@
 
 <nav id="left">
 	<ul>
-		<foreach name="C.menu" item="m1" key="name1">
+		<foreach name="Config.menu" item="m1" key="name1">
 			<li>
 				<present name="m1.link">
 					<a href="{:U($m1['link'])}" class="btn">{$name1}</a>	
@@ -48,14 +48,14 @@
 
 
 
-<block name="main"><!--page content--></block>
+<block name="main"><!--Main content here--></block>
 
 
-<script src="{$C.static_path}script/jquery-1.7.2.min.js"></script>
-<script src="{$C.static_path}vendor/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="{$C.static_path}vendor/pickadate/lib/picker.js"></script>
-<script type="text/javascript" src="{$C.static_path}vendor/pickadate/lib/picker.date.js"></script>
-<script src="{$C.static_path}script/backer.base.js"></script>
+<script src="{$Config.static_path}script/jquery-1.7.2.min.js"></script>
+<script src="{$Config.static_path}vendor/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="{$Config.static_path}vendor/pickadate/lib/picker.js"></script>
+<script type="text/javascript" src="{$Config.static_path}vendor/pickadate/lib/picker.date.js"></script>
+<script src="{$Config.static_path}script/backer.base.js"></script>
 <block name="script"><!--script here--></block>
 
 

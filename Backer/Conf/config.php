@@ -1,78 +1,131 @@
 <?php
 return array(
+	'URL_HTML_SUFFIX'=>null,
+	'DEFAULT_C_LAYER'=>'Core',
+	
 	'BACKER'=>array(
+
 		'title'=>'管理后台',	//后台名称
 		'logo'=>'/Public/img/logo.png',	//logo地址,确保资源能访问到
-		'static_path'=>'/Jinrong/Backer/View/static/',	//根据您的proxy设置，确保静态资源能访问到
-		'reveal'=>'auth_*',	//无需权限验证的 Cotroller_[Action|Model]
+		'static_path'=>'/Jinrong/Backer/Static/',	//URI，根据您的proxy设置，确保静态资源(包含上传的文件)能访问到
+
+		//左侧菜单
 		'menu'=>array(
-		    '用户管理'=>array(
-		        'link'=>'/Backer/List/User/',
-		        'sub_menu'=>array(
-		            '新建用户'=>array('link'=>'/Backer/Edit/User/'),
-		        ),
-		    ),
-		    //...
-		)
-	),
-	//数据交互、功能配置（目前支持List和Edit）
-	'BACKER_MODELS'=>array(
-		'project'=>array(
-		  	//将通过Home模块的Project Model来进行数据操作
-		    'refer'=>'Home/Project',
-		    
-		  	//数据展示、查询功能配置
-		    'list'=>array(
-		        'table'=>array(			//数据显示
-		            'id'=>null,
-		            'name'=>null,
-		            'cate'=>"dict,###,cate",	//执行函数,格式为'fn[,arguments]'，###代替字段值
-		            'rate'=>null,
-		            'amount'=>null,
-		            'sold'=>null,
-		            'start_time'=>"date,Y-m-d,###",
-		            'end_time'=>"date,Y-m-d,###",
-		            'active'=>"dict,###,active",
-		            'state'=>"dict,###,state",
-		        ),
-		        'filter'=>array(		//筛选
-		          	'mobile'=>array('type'=>'input'),	//输入控件
-		            'state'=>array('type'=>'tab','case'=>array(1,2,3)),	//切换控件
-		          	'type'=>array('type'=>'hidden','case'=>array(1,2,3,4,5,6,7)), //隐藏参数
-		        ),
-		        'acts'=>array(   //针对每条Record的自定义操作
-		          	//值只能是执行函数表达式，结果应为URL链接(###为Record数据)
-		            '自定义操作'=>'U,/Backer/YourController/CustomAction,###',
-		        ),
-		    ),
-		  
-		  	//数据修改功能配置
-		    'edit'=>array(
-		        'form'=>array(
-		            'id'=>array('type'=>'hidden'),	//隐藏项
-		            'name'=>array('type'=>'input'), //input输入项
-		            'cate'=>array('type'=>'radio','case'=>array(1,2,3)),  //单项选择
-		            'start_time'=>array('type'=>'date'),  //日期选择
-		            'detail'=>array('type'=>'richtext'),   //富文本(含图片上传)
-		            'pic'=>array('type'=>'file'),   //文件
-		        ),
-		    )
+			'订单查询'=>array(
+				'link'=>'/Backer/Order',
+			),
+			'用户管理'=>array(
+				'link'=>'/Backer/User',
+			),
+			'投资项目'=>array(
+				'link'=>'/Backer/Project',
+				'sub_menu'=>array(
+					'新建项目'=>array('link'=>'/Backer/Project/edit'),
+				),
+			),
+			'新闻管理'=>array(
+				'link'=>'/Backer/Content/Index/type/1',
+				'sub_menu'=>array(
+					'新建新闻'=>array('link'=>'/Backer/Content/edit/type/1'),
+				),
+			),
+			'公告管理'=>array(
+				'link'=>'/Backer/Content/Index/type/2',
+				'sub_menu'=>array(
+					'新建公告'=>array('link'=>'/Backer/Content/edit/type/2'),
+				),
+			),
+			'网站内容'=>array(
+				'sub_menu'=>array(
+					'FAQ'=>array('link'=>'/Backer/Content/Index/type/3'),
+					'操作流程'=>array('link'=>'/Backer/Content/Index/type/4'),
+					'关于我们'=>array('link'=>'/Backer/Content/Index/type/5'),
+					'联系我们'=>array('link'=>'/Backer/Content/Index/type/6'),
+					'首页banner'=>array('link'=>'/Backer/Content/Index/type/7'),
+				),
+			),
 		),
-		//继续定义其它Model ..
-	),
-	//后台帐号
-	'BACKER_ACCOUNTS'=>array(
-		'sunkey'=>array(
-		    'name'=>'sunkey',
-		    'password'=>'test',
-		    'permissions'=>'index_*,list_order,edit_*,act_*',	//权限项格式为： (Controller)_(action|*)
+
+		//帐号配置
+		'accounts'=>array(
+			'sunkey'=>array(
+				'name'=>'sunkey',
+				'password'=>'test',
+				'permissions'=>array(
+					'index'=>'/^.+$/',
+					'edit'=>'/^.+$/',
+				),
+			),
 		),
-	),
-	//翻译字典
-	'BACKER_DICT'=>array(
-		'name'=>'名称',	//'name' | dict
-		'project'=>'项目',	// 'project' | dict
-		'project_name'=>'项目名称', // 'name' | dict=###,'project'
-		'project_state_1'=>'正常', // 1 | dict=###,'project_state'
+
+		//字典
+		'dict'=>array(
+			'order'=>'订单',
+			'user'=>'用户',
+			'product'=>'产品',
+			'uid'=>'用户ID',
+			'ctime'=>'创建时间',
+			'etime'=>'修改时间',
+			'id'=>'ID',
+			'p_name'=>'项目名称',
+			'u_mobile'=>'用户手机号',
+			'mobile'=>'手机号',
+			'email'=>'邮箱',
+			'amount'=>'订单总额',
+			'earnings'=>'预期收益',
+			'rate'=>'年化收益率(%)',
+			'p_rate'=>'年化收益率',
+			'state'=>'状态',
+			'acash'=>'现金余额',
+			'vcash'=>'虚拟余额',
+			'start_time'=>'起息日期',
+			'end_time'=>'结息日期',
+			'title'=>'标题',
+			'content'=>'内容',
+			'type'=>'类型',
+			'cate'=>'类别',
+			'password'=>'密码',
+
+			'active'=>'是否上线',
+			'active_0'=>'未上线',
+			'active_1'=>'已上线',
+
+			'project'=>'项目',
+			'project_name'=>'项目名称',
+			'project_sold'=>'已售',
+			'project_price'=>'单份价格',
+			'project_order_amount_limit'=>'单笔限额',
+			'project_detail'=>'项目详情',
+
+			'project_state_1'=>'正在招标',
+			'project_state_2'=>'投资中',
+			'project_state_3'=>'已过期',
+			'project_cate_1'=>'新手',
+			'project_cate_2'=>'电票',
+			'project_cate_3'=>'纸票',
+
+			'content'=>'内容',
+			'content_type_1'=>'新闻',
+	        'content_type_2'=>'公告',
+	        'content_type_3'=>'FAQ',
+	        'content_type_4'=>'操作流程',
+	        'content_type_5'=>'关于我们',
+	        'content_type_6'=>'联系我们',
+	        'content_type_7'=>'首页Banner',
+
+	        'order_p_end_time'=>'结息时间',
+	        'order_state_1'=>'未支付',
+	        'order_state_2'=>'支付成功',
+	        'order_state_3'=>'已结息',
+	        'order_state_9'=>'已失效',
+
+			'cash_change'=>'动帐',
+			'cash_info'=>'说明',
+			'cash_state_0'=>"处理中",
+			'cash_state_1'=>"成功",
+			'cash_state_2'=>"失败",
+			'cash_state_3'=>"已取消",
+		),
+
 	),
 );

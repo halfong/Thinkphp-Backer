@@ -29,7 +29,7 @@
 
 - 将``Backer``模块放到您的APP目录下（通常是``/Applications/``，与``Home``模块同级）
 - 修改``Backer/Conf/config.php``中的配置[查看文件](Backer/Conf/config.php)
-- 根据需要展示/处理的数据，对应的在``Backer/Controller/``下继承``Core/ModelCOre``添加控制器,查看[示例文件](Backer/Controller/Xmodel.php)
+- 根据需要展示/处理的数据，对应的在``Backer/Controller/``下继承``Core/ModelCOre``添加控制器,查看[示例文件](Backer/Controller/XmodelController.class.php)
 - 访问``yourdomain.com/Backer``开始使用吧（访问地址根据您的proxy配置可能会有不同）
 
 

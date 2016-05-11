@@ -2,7 +2,7 @@
 
 /**
 * 验证用户
-* @param (boolean)$auth_act 是否验证当前操作的权限
+* @param (boolean)$auth_act 同时验证是否拥有当前操作的权限
 * @return (array)backer || false
 **/
 function auth($auth_act=false){
@@ -18,7 +18,7 @@ function auth($auth_act=false){
 }
 
 /**
-* @return defined dict([controller]_[prefix]_[k] || [prefix]_[k])  || prefix_k
+* 翻译字段名
 **/
 function dict($k,$prefix=null){
 	$c = strtolower(CONTROLLER_NAME);
@@ -30,7 +30,12 @@ function dict($k,$prefix=null){
 }
 
 
-//执行配置中的数据显示过滤方法
+/**
+* 模版中执行变量名的方法（因为TP模板语法不支持以变量为）
+* @usage
+* 用于支持ModelController _index['table']配置 'ctime'=>"date,Y-m-d H:i:s,###",
+* {$record[$cname] | filter=$fn,###}
+**/
 function filter($exp,$val){
 
 	if(!$exp){ return $val; }
@@ -44,16 +49,14 @@ function filter($exp,$val){
 
 }
 
+
 function magic_string($string){
 	//图片
 	if( preg_match('/^.*\.(jpg|png|gif|jpeg)$/i', $string) ){
 		return '<img src="'.$string.'" />';
 	}
-
 	return $string;
 }
-
-//根据URL和DICT自动生成标题
 function magic_title(){
 	$title = dict(CONTROLLER_NAME);
 	if( !empty(I('get.')) ){
@@ -64,7 +67,6 @@ function magic_title(){
 	}
 	return $title;
 }
-
 /**
 * 为Index每个Record的操作url追加参数
 **/
